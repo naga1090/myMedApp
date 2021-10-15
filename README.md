@@ -1,5 +1,5 @@
 # Welcome to eMed!
-
+## Initilization
 Hi! To inilitze the app run:
 >expo start
 
