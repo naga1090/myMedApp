@@ -15,3 +15,12 @@ These were the commands used to get libaraires and pacakges to make the app work
 > npm install @react-navigation/native
 
 > npm install @react-navigation/native-stack
+
+## Git Issues
+
+If branch is behind main by X commits:
+1) git checkout main
+2) git pull origin main
+3) git checkout ~NAME OF BRANCH BEHIND COMMITS~
+4) git merge main // Now your branch is in sync with local main branch
+5) git push origin ~NAME OF BRANCH BEHIND COMMITS~
