@@ -13,4 +13,5 @@ This will start the app and launch a developer tools webpage on your localhost. 
 
 These were the commands used to get libaraires and pacakges to make the app work
 > npm install @react-navigation/native
+
 > npm install @react-navigation/native-stack
