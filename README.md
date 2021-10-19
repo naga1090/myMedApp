@@ -20,6 +20,10 @@ These were the commands used to get libaraires and pacakges to make the app work
 
 React Nagivation info and usage: **https://reactnavigation.org/docs/getting-started**
 
+## AWS Amplify
+
+https://dzone.com/articles/a-complete-guide-for-integrating-aws-amplify-to-re
+
 ## Git Issues
 
 If branch is behind main by X commits:
