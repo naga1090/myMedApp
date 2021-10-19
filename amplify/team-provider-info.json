@@ -10,6 +10,11 @@
       "StackName": "amplify-medapp-dev-190841",
       "StackId": "arn:aws:cloudformation:us-east-1:741700586869:stack/amplify-medapp-dev-190841/81ffdb70-3131-11ec-a324-0ea7d7533af5",
       "AmplifyAppId": "d2twyuw67spp2n"
+    },
+    "categories": {
+      "auth": {
+        "medapp1d924102": {}
+      }
     }
   }
 }
