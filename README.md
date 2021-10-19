@@ -16,6 +16,10 @@ These were the commands used to get libaraires and pacakges to make the app work
 
 > npm install @react-navigation/native-stack
 
+## React Nagivation
+
+React Nagivation info and usage: **https://reactnavigation.org/docs/getting-started**
+
 ## Git Issues
 
 If branch is behind main by X commits:
