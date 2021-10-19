@@ -4,6 +4,9 @@ import { StyleSheet, Button, View, SafeAreaView, Text, Alert } from 'react-nativ
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+import Amplify from 'aws-amplify';
+import config from './src/aws-exports';
+
 // import screens
 import LandingScreen from './screens/LandingScreen.js';
 import LoginScreen from './screens/LoginScreen.js';
