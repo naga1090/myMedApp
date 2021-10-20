@@ -1,12 +1,38 @@
 import * as React from 'react';
 import { StyleSheet, Button, View, SafeAreaView, Text, Alert, TouchableOpacity } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import AppButton from '../components/AppButton';
+import { Auth } from 'aws-amplify';
 
-export default function HomeScreen({ navigation }) {
+export default function Home({ updateAuthState, navigation }) {
+
+    async function signOut() {
+        try {
+            await Auth.signOut();
+            updateAuthState('loggedOut');
+        } catch (error) {
+            console.log('Error signing out: ', error);
+        }
+    }
+    
+    const [count, setCount] = React.useState(0);
+    React.useLayoutEffect(() => {
+        navigation.setOptions({
+            headerRight: () => (
+                <Button onPress={signOut} title="Sign Out" />
+            ),
+        });
+    }, [navigation]);
+
     return (
-        <text>hello</text>
+        <View style={styles.container}>
+            <Text> Home YUHHHHH </Text>
+        </View>
     );
 }
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        alignItems: 'center',
+        marginTop: 20
+    }
+});
