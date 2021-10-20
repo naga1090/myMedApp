@@ -4,6 +4,17 @@ Hi! This is a Electronic Health Records app, meant to make it easier for people 
 
 ## Initilization
 
+To start off, run:
+>npm install --global expo-cli
+
+This will install expo command line tools needed to start the project
+
+>expo init NAME-OF-PROJECT -t "blank"
+
+This will create a new app called "NAME-OF-PROJECT" with a "blank" templet (other templets are avilable use expo init --help)
+
+## Running the App
+
 To run the app paste this command from the root directory of the expo folder:
 >expo start
 
