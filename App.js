@@ -20,9 +20,9 @@ function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+        <Stack.Screen name="SignUpScreen" component={SignUpScreen} options={{ title: 'Sign Up'}} />
         <Stack.Screen name="LandingScreen" component={LandingScreen} options={{ title: 'Overview' }} />
         <Stack.Screen name="LoginScreen" component={LoginScreen} options={{ title: 'Log In'}} />
-        <Stack.Screen name="SignUpScreen" component={SignUpScreen} options={{ title: 'Sing Up'}} />
         <Stack.Screen name="ConfirmSignUpScreen" component={ConfirmSignUpScreen} options={{ title: 'Confirmation'}} />
       </Stack.Navigator>
     </NavigationContainer>

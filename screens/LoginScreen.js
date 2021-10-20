@@ -15,13 +15,18 @@ export default function LoginScreen({ navigation, updateAuthState }) {
 
     async function Login() {
         try {
-
             if(email === "" || password === ""){
+                alert("Please fill out all fields");
                 throw "Empty Fields";
+            } else if(!regularExpressionEmail.test((email.toLowerCase()))){
+                alert("Please enter a valid email");
+                throw "invalid email";
+            } else if(!regularExpressionPassword.test(password)){
+                alert("password should be at least 8 chars, at least 1 upper char, 1 lower case char, 1 number, and 1 special char");
+                throw "invalid password";
             }
-            
             await Auth.signIn(email, password);
-            console.log(' Success');
+            console.log('Success');
             updateAuthState('loggedIn');
         } catch (error) {
             console.log(' Error loggin in...', error);
@@ -53,7 +58,7 @@ export default function LoginScreen({ navigation, updateAuthState }) {
                 />
                 <AppButton title="Login" onPress={Login} />
                 <View style={styles.footerButtonContainer}>
-                    <TouchableOpacity onPress={() => this.props.navigation.navigate('LoginScreen')}>
+                    <TouchableOpacity onPress={() => navigation.navigate('SignUpScreen')}>
                         <Text style={styles.forgotPasswordButtonText}>
                             Don't have an account? Sign Up
                         </Text>

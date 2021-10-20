@@ -12,7 +12,7 @@ function ConfirmSignUpScreen({ navigation }) {
 class ConfirmSignUpScreenActions extends React.Component {
     render() {
         return (
-            <text>Sign Up</text>
+            <text>Confirm Screen</text>
         );
     }
 }
