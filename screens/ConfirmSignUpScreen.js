@@ -6,38 +6,39 @@ import { Auth } from 'aws-amplify';
 import AppTextInput from '../components/AppTextInput';
 import AppButton from '../components/AppButton';
 
-var regularExpressionEmail = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-var regularExpressionPassword = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/;
+export default function ConfirmSignUpScreen({ route, navigation }) {
 
-export default function LoginScreen({ navigation, updateAuthState }) {
+    const { emailUsername } = route.params;
     const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [authCode, setAuthCode] = useState('');
 
-    async function Login() {
+    async function confirmSignUp() {
         try {
-            if(email === "" || password === ""){
+            if(email === "" || authCode === ""){
                 alert("Please fill out all fields");
                 throw "Empty Fields";
-            } else if(!regularExpressionEmail.test((email.toLowerCase()))){
-                alert("Please enter a valid email");
-                throw "invalid email";
-            } else if(!regularExpressionPassword.test(password)){
-                alert("password should be at least 8 chars, at least 1 upper char, 1 lower case char, 1 number, and 1 special char");
-                throw "invalid password";
             }
             const username = email; // auth needs username varibel to be passed in even if username is email
-            await Auth.signIn(username, password);
-            console.log('Success');
-            updateAuthState('loggedIn');
+            await Auth.confirmSignUp(username, authCode);
+            console.log('Code confirmed');
+            navigation.navigate('HomeScreen');
         } catch (error) {
-            console.log(' Error loggin in...', error);
+            console.log('Verification code does not match. Please enter a valid verification code or resend it.',error.code);
         }
     }
-
+    async function resendConfirmationCode() {
+        try {
+            const username = email; // auth needs username varibel to be passed in even if username is email
+            await Auth.resendSignUp(username);
+            console.log('Code resent successfully');
+        } catch(error){
+            console.log('Error resending code: ', error);
+        }
+    }
     return (
         <SafeAreaView style={styles.safeAreaContainer}>
             <View style={styles.container}>
-                <Text style={styles.title}>Login to your account</Text>
+                <Text style={styles.title}>Confirm Sign Up</Text>
                 <AppTextInput
                     value={email}
                     onChangeText={text => setEmail(text)}
@@ -48,20 +49,17 @@ export default function LoginScreen({ navigation, updateAuthState }) {
                     textContentType="emailAddress"
                 />
                 <AppTextInput
-                    value={password}
-                    onChangeText={text => setPassword(text)}
-                    leftIcon="lock"
-                    placeholder="Enter password"
-                    autoCapitalize="none"
-                    autoCorrect={false}
-                    secureTextEntry
-                    textContentType="password"
+                    value={authCode}
+                    onChangeText={text => setAuthCode(text)}
+                    leftIcon="numeric"
+                    placeholder="Enter verification code"
+                    keyboardType="numeric"
                 />
-                <AppButton title="Login" onPress={Login} />
+                <AppButton title="Confirm Sign Up" onPress={confirmSignUp} />
                 <View style={styles.footerButtonContainer}>
-                    <TouchableOpacity onPress={() => navigation.navigate('SignUpScreen')}>
+                    <TouchableOpacity onPress={resendConfirmationCode}>
                         <Text style={styles.forgotPasswordButtonText}>
-                            Don't have an account? Sign Up
+                            Resend verification code?
                         </Text>
                     </TouchableOpacity>
                 </View>
