@@ -25,7 +25,8 @@ export default function LoginScreen({ navigation, updateAuthState }) {
                 alert("password should be at least 8 chars, at least 1 upper char, 1 lower case char, 1 number, and 1 special char");
                 throw "invalid password";
             }
-            await Auth.signIn(email, password);
+            const username = email; // auth needs username varibel to be passed in even if username is email
+            await Auth.signIn(username, password);
             console.log('Success');
             updateAuthState('loggedIn');
         } catch (error) {

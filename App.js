@@ -6,6 +6,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import Amplify from 'aws-amplify';
 import config from './src/aws-exports';
+Amplify.configure(config);
 
 // import screens
 import SignUpScreen from './screens/SignUpScreen.js';
@@ -20,10 +21,10 @@ function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="HomeScreen" component={HomeScreen} options={{ title: 'Overview | Med App' }} />
         <Stack.Screen name="SignUpScreen" component={SignUpScreen} options={{ title: 'Sign Up | Med App'}} />
         <Stack.Screen name="ConfirmSignUpScreen" component={ConfirmSignUpScreen} options={{ title: 'Confirmation | Med App'}} />
         <Stack.Screen name="LoginScreen" component={LoginScreen} options={{ title: 'Login | Med App'}} />
+        <Stack.Screen name="HomeScreen" component={HomeScreen} options={{ title: 'Overview | Med App' }} />
       </Stack.Navigator>
     </NavigationContainer>
   );

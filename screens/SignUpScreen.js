@@ -32,10 +32,12 @@ export default function SignUpScreen({ navigation }) {
                 alert("Passwords do not match");
                 throw "Passwords do not match";
             }
+            const username = email; // auth needs username varibel to be passed in even if username is email
             await Auth.signUp({ 
-                email,
+                username,
                 password,
                 attributes: {
+                    email,
                     "custom:first_name": firstName,
                     "custom:last_name": lastName
                 } 

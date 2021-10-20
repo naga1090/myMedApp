@@ -18,7 +18,8 @@ export default function ConfirmSignUpScreen({ route, navigation }) {
                 alert("Please fill out all fields");
                 throw "Empty Fields";
             }
-            await Auth.confirmSignUp(email, authCode);
+            const username = email; // auth needs username varibel to be passed in even if username is email
+            await Auth.confirmSignUp(username, authCode);
             console.log('Code confirmed');
             navigation.navigate('HomeScreen');
         } catch (error) {
@@ -27,7 +28,8 @@ export default function ConfirmSignUpScreen({ route, navigation }) {
     }
     async function resendConfirmationCode() {
         try {
-            await Auth.resendSignUp(emailUsername);
+            const username = email; // auth needs username varibel to be passed in even if username is email
+            await Auth.resendSignUp(username);
             console.log('Code resent successfully');
         } catch(error){
             console.log('Error resending code: ', error);
