@@ -15,10 +15,12 @@ import SignUpScreen from './screens/SignUpScreen.js';
 import ConfirmSignUpScreen from './screens/ConfirmSignUpScreen.js';
 import LoginScreen from './screens/LoginScreen.js';
 import HomeScreen from './screens/HomeScreen.js';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 // create the nagivation stacks
 const AuthenticationStack = createStackNavigator();
-const AppStack = createStackNavigator();
+const TabStack = createBottomTabNavigator();
+// const AppStack = createStackNavigator();
 
 const AuthenticationNavigator = props => {
   return (
@@ -32,15 +34,25 @@ const AuthenticationNavigator = props => {
   );
 };
 
-const AppNavigator = props => {
+const TabNavigator = props => {
   return (
-    <AppStack.Navigator>
-      <AppStack.Screen name="HomeScreen">
+    <TabStack.Navigator>
+      <TabStack.Screen name="HomeScreen" options={{ title: 'Home' }} >
         {screenProps => (<HomeScreen {...screenProps} updateAuthState={props.updateAuthState} />)}
-      </AppStack.Screen>
-    </AppStack.Navigator>
+      </TabStack.Screen>
+    </TabStack.Navigator>
   );
 };
+
+// const AppNavigator = props => {
+//   return (
+//     <AppStack.Navigator>
+//       <AppStack.Screen name="HomeScreen" options={{ title: 'Home | Med App' }} >
+//         {screenProps => (<HomeScreen {...screenProps} updateAuthState={props.updateAuthState} />)}
+//       </AppStack.Screen>
+//     </AppStack.Navigator>
+//   );
+// };
 
 const Initializing = () => {
   return (
@@ -76,7 +88,7 @@ function App() {
   return (
     <NavigationContainer>
       {isUserLoggedIn === 'initializing' && <Initializing />}
-      {isUserLoggedIn === 'loggedIn' && (<AppNavigator updateAuthState={updateAuthState} />)}
+      {isUserLoggedIn === 'loggedIn' && (<TabNavigator updateAuthState={updateAuthState} />)}
       {isUserLoggedIn === 'loggedOut' && (<AuthenticationNavigator updateAuthState={updateAuthState} />)}
     </NavigationContainer>
   );
