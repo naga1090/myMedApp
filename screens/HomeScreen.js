@@ -3,6 +3,7 @@ import { StyleSheet, Button, View, SafeAreaView, Text, Alert, TouchableOpacity }
 
 import { Auth } from 'aws-amplify';
 
+// UPDATEAUTHSTATE FUNCTION IS NOT DEFINED YET, CONTUNIE
 export default function Home({ updateAuthState, navigation }) {
 
     async function signOut() {
@@ -13,7 +14,7 @@ export default function Home({ updateAuthState, navigation }) {
             console.log('Error signing out: ', error);
         }
     }
-    
+
     const [count, setCount] = React.useState(0);
     React.useLayoutEffect(() => {
         navigation.setOptions({

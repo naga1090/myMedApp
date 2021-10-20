@@ -16,15 +16,37 @@ These were the commands used to get libaraires and pacakges to make the app work
 
 > npm install @react-navigation/native-stack
 
+> npm install -g @aws-amplify/cli (here down used AWS Amplify tutorial found below)
+
+> amplify configure (make sure to have AWS account, this command will configure it on your project)
+
+> amplify init
+
+> yarn add aws-amplify aws-amplify-react-native (if error occurs after, run "npm install" to download dependencies)
+
+> amplify env pull (not in tutorial)
+
+> amplify status (not in tutorial)
+
+> amplify add auth
+
+> amplify push
+
 ## React Nagivation
 
 React Nagivation info and usage: **https://reactnavigation.org/docs/getting-started**
+Remember to add route to function paramater to get access to passing paramaters in screen.js files
+import all the exported functions in various screen.js files into App.js which is central navigation hub, to create navigation stack
 
 ## AWS Amplify
 
-https://dzone.com/articles/a-complete-guide-for-integrating-aws-amplify-to-re
+AWS Amplify tutorial: **https://dzone.com/articles/a-complete-guide-for-integrating-aws-amplify-to-re**
 
-stored aws acccess and secrte access key on local computer under info excel file
+stored aws acccess and secret access key on local computer under info excel file
+remember to include Amplify.config(CONFIG FILE); to App.js
+config file might be under src folder and not in root dir depending on how amplify was configed inifitally
+AWS Auth needs username named variable, even if using email as username
+create custom attributes on AWS management console cognito user group settings, once created cannot be undone. Need to create custom ones to store other useful data before signing in user first time
 
 if app does not work after running "yarn add aws-amplify aws-amplify-react-native" from ^, run "npm install" to install dependencies, should work after
 
