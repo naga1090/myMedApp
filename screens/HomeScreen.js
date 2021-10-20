@@ -3,7 +3,6 @@ import { StyleSheet, Button, View, SafeAreaView, Text, Alert, TouchableOpacity }
 
 import { Auth } from 'aws-amplify';
 
-// UPDATEAUTHSTATE FUNCTION IS NOT DEFINED YET, CONTUNIE HERE WITH TUTORIAL CREATING DIFFERENT NAVIGATION STACKS
 export default function Home({ updateAuthState, navigation }) {
 
     async function signOut() {

@@ -43,6 +43,10 @@ These were the commands used to get libaraires and pacakges to make the app work
 
 > amplify push
 
+> npm install --save @react-navigation/stack
+
+> npm install --save @react-navigation/bottom-tabs
+
 ## React Nagivation
 
 React Nagivation documentation: **https://reactnavigation.org/docs/getting-started**
