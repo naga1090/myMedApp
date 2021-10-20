@@ -8,7 +8,7 @@ import Amplify from 'aws-amplify';
 import config from './src/aws-exports';
 
 // import screens
-import LandingScreen from './screens/LandingScreen.js';
+import HomeScreen from './screens/HomeScreen.js';
 import LoginScreen from './screens/LoginScreen.js';
 import SignUpScreen from './screens/SignUpScreen.js';
 import ConfirmSignUpScreen from './screens/ConfirmSignUpScreen.js';
@@ -21,9 +21,9 @@ function App() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="SignUpScreen" component={SignUpScreen} options={{ title: 'Sign Up'}} />
-        <Stack.Screen name="LandingScreen" component={LandingScreen} options={{ title: 'Overview' }} />
-        <Stack.Screen name="LoginScreen" component={LoginScreen} options={{ title: 'Log In'}} />
         <Stack.Screen name="ConfirmSignUpScreen" component={ConfirmSignUpScreen} options={{ title: 'Confirmation'}} />
+        <Stack.Screen name="LoginScreen" component={LoginScreen} options={{ title: 'Log In'}} />
+        <Stack.Screen name="HomeScreen" component={HomeScreen} options={{ title: 'Overview' }} />
       </Stack.Navigator>
     </NavigationContainer>
   );

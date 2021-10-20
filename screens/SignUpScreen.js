@@ -32,9 +32,16 @@ export default function SignUpScreen({ navigation }) {
                 alert("Passwords do not match");
                 throw "Passwords do not match";
             }
-            await Auth.signUp({ username, password, attributes: { email } });
-            console.log(' Sign-up Confirmed');
-            navigation.navigate('ConfirmSignUpScreen');
+            await Auth.signUp({ 
+                email,
+                password,
+                attributes: {
+                    "custom:first_name": firstName,
+                    "custom:last_name": lastName
+                } 
+            });
+            console.log('Sign-up Confirmed');
+            navigation.navigate('ConfirmSignUpScreen', { emailUsername: email });
         } catch (error) {
             console.log(' Error signing up...', error);
         }
