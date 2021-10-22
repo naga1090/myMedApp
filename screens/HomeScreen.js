@@ -1,10 +1,35 @@
 import * as React from 'react';
-import { StyleSheet, Button, View, SafeAreaView, Text, Alert, TouchableOpacity } from 'react-native';
+import { useEffect, useState, setState, Component } from 'react';
+import { StyleSheet, Button, View, SafeAreaView, Text, Alert, TouchableOpacity, Modal } from 'react-native';
 
-import { Auth } from 'aws-amplify';
+import Amplify, { Auth } from 'aws-amplify';
+import awsconfig from '../src/aws-exports';
+Amplify.configure(awsconfig);
+
+import { createMap, createAmplifyGeocoder, drawPoints } from "maplibre-gl-js-amplify";
+import maplibregl from "maplibre-gl";
+import "maplibre-gl/dist/maplibre-gl.css";
+import "@maplibre/maplibre-gl-geocoder/dist/maplibre-gl-geocoder.css";
+import "maplibre-gl-js-amplify/dist/public/amplify-geocoder.css"; // Optional CSS for Amplify recommended styling
+
+import "./ho.css";
+
+import AppButton from '../components/AppButton';
+
+// async function initializeMap() {
+//     const maps = await createMap({
+//         container: "map",
+//         center: [-77.0369, 38.9072],
+//         zoom: 11,
+//     })
+//     maps.addControl(createAmplifyGeocoder());
+//     return maps;
+// }
+// initializeMap();
 
 export default function Home({ updateAuthState, navigation }) {
 
+    // async function, const defination, and React. all create Sign Out button in top right
     async function signOut() {
         try {
             await Auth.signOut();
@@ -13,8 +38,6 @@ export default function Home({ updateAuthState, navigation }) {
             console.log('Error signing out: ', error);
         }
     }
-
-    const [count, setCount] = React.useState(0);
     React.useLayoutEffect(() => {
         navigation.setOptions({
             headerRight: () => (
@@ -23,16 +46,18 @@ export default function Home({ updateAuthState, navigation }) {
         });
     }, [navigation]);
 
+    // useEffect(async () => {
+    //     const map = await initializeMap();
+    // }, []);
+
     return (
-        <View style={styles.container}>
-            <Text> Home YUHHHHH </Text>
+        // <View style={{ flex: 1 }}>
+        //     {/* <div id="welcomeText"></div> */}
+        //     {/* <div id="map"></div> */}
+        // </View>
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+            <Text> Home Screen </Text>
+            {/* <Text style={styles.buttonText}>{email}</Text> */}
         </View>
     );
 }
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: 'center',
-        marginTop: 20
-    }
-});

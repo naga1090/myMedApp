@@ -6,7 +6,7 @@ import { Auth } from 'aws-amplify';
 import AppTextInput from '../components/AppTextInput';
 import AppButton from '../components/AppButton';
 
-export default function ConfirmSignUpScreen({ route, navigation }) {
+export default function ConfirmSignUpScreen({ route, navigation, updateAuthState }) {
 
     const { emailUsername } = route.params;
     const [email, setEmail] = useState('');
@@ -19,16 +19,17 @@ export default function ConfirmSignUpScreen({ route, navigation }) {
                 throw "Empty Fields";
             }
             const username = email; // auth needs username varibel to be passed in even if username is email
-            await Auth.confirmSignUp(username, authCode);
+            const code = authCode;
+            await Auth.confirmSignUp(username, code);
             console.log('Code confirmed');
-            navigation.navigate('HomeScreen');
+            updateAuthState('loggedIn');
         } catch (error) {
             console.log('Verification code does not match. Please enter a valid verification code or resend it.',error.code);
         }
     }
     async function resendConfirmationCode() {
         try {
-            const username = email; // auth needs username varibel to be passed in even if username is email
+            const username = emailUsername; // auth needs username varibel to be passed in even if username is email
             await Auth.resendSignUp(username);
             console.log('Code resent successfully');
         } catch(error){

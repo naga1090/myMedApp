@@ -1,0 +1,5 @@
+#map { /* The id of the container you passed to createMap */
+    height: 80vh;
+    width: 80vw;
+    margin: auto;
+}

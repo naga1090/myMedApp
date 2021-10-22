@@ -47,6 +47,18 @@ These were the commands used to get libaraires and pacakges to make the app work
 
 > npm install --save @react-navigation/bottom-tabs
 
+> amplify add geo (Phase 2 starts here, add map services)
+
+> amplify push
+
+> npm install -S maplibre-gl@1 maplibre-gl-js-amplify
+
+> npm install -S @maplibre/maplibre-gl-geocoder
+
+> amplify add geo (this time add location services)
+
+> npm i react-native-modal
+
 ## React Nagivation
 
 React Nagivation documentation: **https://reactnavigation.org/docs/getting-started**

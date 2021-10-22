@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { StyleSheet, Button, View, SafeAreaView, Text, Alert, ActivityIndicator } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-// import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import Amplify, { Auth } from 'aws-amplify';
 import config from './src/aws-exports';
@@ -15,7 +15,7 @@ import SignUpScreen from './screens/SignUpScreen.js';
 import ConfirmSignUpScreen from './screens/ConfirmSignUpScreen.js';
 import LoginScreen from './screens/LoginScreen.js';
 import HomeScreen from './screens/HomeScreen.js';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import AccountInfoScreen from './screens/AccountInfoScreen';
 
 // create the nagivation stacks
 const AuthenticationStack = createStackNavigator();
@@ -25,11 +25,15 @@ const TabStack = createBottomTabNavigator();
 const AuthenticationNavigator = props => {
   return (
     <AuthenticationStack.Navigator headerMode="none">
+
       <AuthenticationStack.Screen name="LoginScreen" options={{ title: 'Login | Med App' }} >
         {screenProps => (<LoginScreen {...screenProps} updateAuthState={props.updateAuthState} />)}
       </AuthenticationStack.Screen>
+
       <AuthenticationStack.Screen name="SignUpScreen" component={SignUpScreen} options={{ title: 'Sign Up | Med App' }} />
-      <AuthenticationStack.Screen name="ConfirmSignUp" component={ConfirmSignUpScreen} options={{ title: 'Confirm Sign Up | Med App' }} />
+
+      <AuthenticationStack.Screen name="ConfirmSignUpScreen" component={ConfirmSignUpScreen} options={{ title: 'Confirm Sign Up | Med App' }} />
+
     </AuthenticationStack.Navigator>
   );
 };
@@ -40,19 +44,12 @@ const TabNavigator = props => {
       <TabStack.Screen name="HomeScreen" options={{ title: 'Home' }} >
         {screenProps => (<HomeScreen {...screenProps} updateAuthState={props.updateAuthState} />)}
       </TabStack.Screen>
+      <TabStack.Screen name="AccountInfoScreen" options={{ title: 'Account' }} >
+        {screenProps => (<AccountInfoScreen {...screenProps} updateAuthState={props.updateAuthState} />)}
+      </TabStack.Screen>
     </TabStack.Navigator>
   );
 };
-
-// const AppNavigator = props => {
-//   return (
-//     <AppStack.Navigator>
-//       <AppStack.Screen name="HomeScreen" options={{ title: 'Home | Med App' }} >
-//         {screenProps => (<HomeScreen {...screenProps} updateAuthState={props.updateAuthState} />)}
-//       </AppStack.Screen>
-//     </AppStack.Navigator>
-//   );
-// };
 
 const Initializing = () => {
   return (
