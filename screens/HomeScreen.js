@@ -16,16 +16,16 @@ import "./ho.css";
 
 import AppButton from '../components/AppButton';
 
-// async function initializeMap() {
-//     const maps = await createMap({
-//         container: "map",
-//         center: [-77.0369, 38.9072],
-//         zoom: 11,
-//     })
-//     maps.addControl(createAmplifyGeocoder());
-//     return maps;
-// }
-// initializeMap();
+async function initializeMap() {
+    const maps = await createMap({
+        container: "map",
+        center: [-77.0369, 38.9072],
+        zoom: 11,
+    })
+    maps.addControl(createAmplifyGeocoder());
+    return maps;
+}
+initializeMap();
 
 export default function Home({ updateAuthState, navigation }) {
 
@@ -51,13 +51,8 @@ export default function Home({ updateAuthState, navigation }) {
     // }, []);
 
     return (
-        // <View style={{ flex: 1 }}>
-        //     {/* <div id="welcomeText"></div> */}
-        //     {/* <div id="map"></div> */}
-        // </View>
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-            <Text> Home Screen </Text>
-            {/* <Text style={styles.buttonText}>{email}</Text> */}
+        <View style={{ flex: 1 }}>
+            <div id="map"></div>
         </View>
     );
 }

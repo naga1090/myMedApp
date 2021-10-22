@@ -170,8 +170,7 @@ export default function LoginScreen({ navigation, updateAuthState }) {
                             onChangeText={text => setAuthCode(text)}
                             leftIcon="numeric"
                             placeholder="Enter verification code"
-                            keyboardType="numeric"
-                        />
+                            keyboardType="numeric" />
                         <AppTextInput
                             value={forgotPassword}
                             onChangeText={text => setForgotPassword(text)}
@@ -180,8 +179,7 @@ export default function LoginScreen({ navigation, updateAuthState }) {
                             autoCapitalize="none"
                             autoCorrect={false}
                             secureTextEntry
-                            textContentType="password"
-                        />
+                            textContentType="password" />
                         <AppTextInput
                             value={forgotPasswordConf}
                             onChangeText={text => setForgotPasswordConf(text)}
@@ -190,8 +188,7 @@ export default function LoginScreen({ navigation, updateAuthState }) {
                             autoCapitalize="none"
                             autoCorrect={false}
                             secureTextEntry
-                            textContentType="password"
-                        />
+                            textContentType="password" />
                         <TouchableOpacity onPress={resetPassowrd}>
                             <Text style={styles.modalNextButton}>Reset Password</Text>
                         </TouchableOpacity>

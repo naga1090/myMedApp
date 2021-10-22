@@ -32,7 +32,9 @@ const AuthenticationNavigator = props => {
 
       <AuthenticationStack.Screen name="SignUpScreen" component={SignUpScreen} options={{ title: 'Sign Up | Med App' }} />
 
-      <AuthenticationStack.Screen name="ConfirmSignUpScreen" component={ConfirmSignUpScreen} options={{ title: 'Confirm Sign Up | Med App' }} />
+      <AuthenticationStack.Screen name="ConfirmSignUpScreen" options={{ title: 'Confirm Sign Up | Med App' }} >
+        {screenProps => (<ConfirmSignUpScreen {...screenProps} updateAuthState={props.updateAuthState} />)}
+      </AuthenticationStack.Screen>
 
     </AuthenticationStack.Navigator>
   );

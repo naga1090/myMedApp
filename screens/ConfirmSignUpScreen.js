@@ -6,7 +6,7 @@ import { Auth } from 'aws-amplify';
 import AppTextInput from '../components/AppTextInput';
 import AppButton from '../components/AppButton';
 
-export default function ConfirmSignUpScreen({ route, navigation, updateAuthState }) {
+export default function ConfirmSignUpScreen({ route, updateAuthState }) {
 
     const { emailUsername } = route.params;
     const [email, setEmail] = useState('');
@@ -32,6 +32,7 @@ export default function ConfirmSignUpScreen({ route, navigation, updateAuthState
             const username = emailUsername; // auth needs username varibel to be passed in even if username is email
             await Auth.resendSignUp(username);
             console.log('Code resent successfully');
+            alert("Code resent");
         } catch(error){
             console.log('Error resending code: ', error);
         }
