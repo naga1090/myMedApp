@@ -57,7 +57,13 @@ These were the commands used to get libaraires and pacakges to make the app work
 
 > amplify add geo (this time add location services)
 
-> npm i react-native-modal
+> npm install react-native-modal (might have to --force)
+
+> npm i modal-enhanced-react-native-web (might have to --force)
+
+> expo install expo-location
+
+> npm install (might have to run after ^ if error occurs)
 
 ## React Nagivation
 
