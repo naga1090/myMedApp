@@ -81,6 +81,7 @@ AWS Amplify tutorial: **https://dzone.com/articles/a-complete-guide-for-integrat
 - AWS Auth needs username named variable, even if using email as username
 - Create custom attributes on AWS management console cognito user group settings, once created cannot be undone. Need to - Create custom ones to store other useful data before signing in user first time
 - if app does not work after running "yarn add aws-amplify aws-amplify-react-native" from ^, run "npm install" to install dependencies, should work after
+- For placing points on map: https://docs.amplify.aws/lib/geo/maps/q/platform/js/#display-markers-on-map
 
 ## Git Issues
 

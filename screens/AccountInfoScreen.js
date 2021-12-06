@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useState } from 'react';
 import { StyleSheet, Button, View, SafeAreaView, Text, Alert, TouchableOpacity } from 'react-native';
 
-import { Auth } from 'aws-amplify';
+import { Auth, Storage, Geo } from 'aws-amplify';
 import AppTextInput from '../components/AppTextInput';
 import AppButton from '../components/AppButton';
 
@@ -30,35 +30,53 @@ export default function AccountInfoScreen({ navigation, updateAuthState }) {
         });
     }, [navigation]);
 
-    async function thisUser(){
+    async function thisUser() {
         try {
-            const {attributes} = await Auth.currentAuthenticatedUser();
+            const { attributes } = await Auth.currentAuthenticatedUser();
             email = attributes["email"];
             first_name = attributes["custom:first_name"];
             last_name = attributes["custom:last_name"];
             email_verified = attributes["email_verified"];
-        } catch(error){
+        } catch (error) {
             console.log("Error getting current user: ", error);
         }
     }
     thisUser();
-    
+
     return (
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
             <Text> Account Info Screen </Text>
             {/* <Text style={styles.buttonText}>{email}</Text> */}
+            <input type="file" id="input" ></input>
+            <img src="../assets/placeholder_profile.jpg" width="512" height="512"></img>
+            <button type="button" id="uploadFiles" onClick={
+                async function uploadFiles() {
+                    try {
+                        const selectedFile = document.getElementById('input').files[0];
+                        if (selectedFile) {
+                            const result = await Storage.put(selectedFile.name, selectedFile, {
+                                level: "private",
+                            });
+                            console.log(result);
+                            console.log("Done Uplodaing");
+                        }
+                    } catch (error) {
+                        console.log("No files to upload");
+                    }
+                }
+            }>Upload Files</button>
         </View>
     );
 }
 
 const styles = StyleSheet.create({
     button: {
-      marginVertical: 10,
-      borderRadius: 25,
-      justifyContent: 'center',
-      alignItems: 'center',
-      padding: 15,
-      width: '80%',
-      backgroundColor: 'tomato'
+        marginVertical: 10,
+        borderRadius: 25,
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: 15,
+        width: '80%',
+        backgroundColor: 'tomato'
     },
-  });
+});
